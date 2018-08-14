@@ -1,0 +1,58 @@
+/* 
+hector doñe
+17-MIIN-1-152
+0541
+*/
+create database hector_2;
+use hector_2;
+
+create table marca(
+id int identity (1,1) not null primary key,
+nombre varchar(50)
+);
+
+create table matricula(
+id int identity (1,1) not null primary key,
+nombre varchar(50)
+);
+
+create table modelo(
+id int identity (1,1) not null primary key,
+nombre varchar(50)
+);
+
+create table anio(
+id int identity (1,1) not null primary key,
+nombre int
+);
+
+create table vehiculo(
+id int identity (1,1) not null primary key,
+id_modelo int,
+id_marca int,
+id_anio int,
+id_matricula int,
+
+constraint FK_vehiculo_marca foreign key (id_marca) references marca(id),
+constraint FK_vehiculo_modelo foreign key (id_modelo) references modelo(id),
+constraint FK_vehiculo_matricula foreign key (id_matricula) references matricula(id),
+constraint FK_vehiculo_anio foreign key (id_anio) references anio(id)
+);
+
+insert into anio(numero) values('2001'),('2002'),('2003')
+,('2004'),('2005'),('2006'),('2007'),('2008')
+,('2009'),('2010');
+
+insert into marca(nombre) values('bmw'),('mazda'),('toyota')
+,('audi'),('konnechi'),('mercedes'),('nissan'),('izuzu')
+,('ferrari'),('jaguar');
+
+insert into modelo(nombre) values('m_2001'),('m_2002'),('m_2003')
+,('m_2004'),('m_2005'),('m_2006'),('m_2007'),('m_2008')
+,('m_2009'),('m_2010');
+
+insert into matricula(nombre) values('16_001'),('16_002'),('16_003')
+,('16_004'),('16_005'),('16_006'),('16_007'),('16_008')
+,('16_009'),('16_010');
+
+insert into vehiculo(id_modelo,id_marca,id_anio,id_matricula) values(1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6),(7,7,7,7),(8,8,8,8),(9,9,9,9),(10,10,10,10);
