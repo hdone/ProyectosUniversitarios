@@ -1,0 +1,47 @@
+/* 
+hector doñe
+17-MIIN-1-152
+0541
+*/
+create database hector_1;
+use hector_1;
+
+create table materia(
+id int identity (1,1) not null primary key,
+nombre varchar(50)
+);
+
+create table curso(
+id int identity (1,1) not null primary key,
+numero varchar(50)
+);
+
+create table profesor(
+id int identity (1,1) not null primary key,
+nombre varchar(50),
+cedula varchar(12),
+id_materia int,
+
+constraint FK_profesor_materia foreign key (id_materia) references materia(id)
+);
+
+create table curso_profesor(
+id int identity (1,1) not null primary key,
+id_profesor int,
+id_curso int,
+
+constraint FK_curso_profesor_1 foreign key (id_profesor) references profesor(id),
+constraint FK_curso_profesor_2 foreign key (id_curso) references curso(id)
+);
+insert into materia(nombre) values('matematica'),('espanol'),('quimica')
+,('sociales'),('biologia'),('matematica 014'),('programacion'),('base de dato')
+,('contabilidad'),('naturales');
+
+insert into curso(numero) values('001'),('002'),('003')
+,('004'),('005'),('006'),('007'),('008')
+,('009'),('010');
+
+insert into profesor(nombre,cedula,id_materia) values('paul','111',1),('ramon','222',2),('paula','333',3),('dary','444',4),('rafael','555',5),('joan','666',6),('marcus','777',7),('ada','888',8),('camila','999',9),('andy','110',10);
+
+insert into curso_profesor(id_curso,id_profesor) values(1,1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10);
